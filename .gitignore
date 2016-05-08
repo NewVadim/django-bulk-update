@@ -1,0 +1,7 @@
+*.py[co]
+.idea
+.DS_Store
+test/db.sqlite3.bulk_update
+test/bulk_update
+__pycache__/
+*.egg-info

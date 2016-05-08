@@ -1,0 +1,19 @@
+bulk_update_mysql:
+  extends:
+    file: common-services.yml
+    service: mysql
+
+bulk_update_postgresql:
+  extends:
+    file: common-services.yml
+    service: postgresql
+
+bulk_update_test_site:
+  build: ./35
+  volumes:
+  - ../test:/usr/src/app
+  - ../bulk_update:/usr/src/app/bulk_update
+  command: python manage.py test -n -v 2
+  links:
+  - bulk_update_postgresql
+  - bulk_update_mysql
